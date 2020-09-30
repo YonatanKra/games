@@ -7,6 +7,8 @@
     "start": "nx serve",
     "build": "nx build",
     "test": "nx test",
+    "test:all": "npx nx run-many --all --target=test --parallel",
+    "test:dev": "npx nx run-many --all --target=test --parallel --watch",
     "lint": "nx workspace-lint && nx lint",
     "e2e": "nx e2e",
     "affected:apps": "nx affected:apps",
