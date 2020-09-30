@@ -15,7 +15,9 @@
     "skipLibCheck": true,
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
-    "paths": {}
+    "paths": {
+      "@games/map": ["libs/map/src/index.ts"]
+    }
   },
   "exclude": ["node_modules", "tmp"]
 }
