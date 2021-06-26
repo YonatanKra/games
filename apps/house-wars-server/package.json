@@ -1,0 +1,24 @@
+{
+  "dependencies": {
+    "@angular/animations": "^12.0.0",
+    "@angular/common": "^12.0.0",
+    "@angular/compiler": "^12.0.0",
+    "@angular/core": "^12.0.0",
+    "@angular/forms": "^12.0.0",
+    "@angular/platform-browser": "^12.0.0",
+    "@angular/platform-browser-dynamic": "^12.0.0",
+    "@angular/router": "^12.0.0",
+    "core-js": "^3.6.5",
+    "document-register-element": "1.13.1",
+    "express": "4.17.1",
+    "regenerator-runtime": "0.13.7",
+    "rxjs": "~6.6.0",
+    "socket.io": "^4.1.2",
+    "socket.io-client": "^4.1.2",
+    "tslib": "^2.0.0",
+    "zone.js": "~0.11.4"
+  },
+  "scripts": {
+    "build": "echo already"
+  }
+}
