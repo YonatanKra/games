@@ -4,8 +4,8 @@
   "license": "MIT",
   "scripts": {
     "nx": "nx",
-    "start": "nx build --prod house-wars && nx build --prod house-wars-server && node ./dist/apps/house-wars-server/main.js",
-    "build": "nx build",
+    "start": "node ./dist/apps/house-wars-server/main.js",
+    "build": "nx build --prod house-wars && nx build --prod house-wars-server",
     "test": "nx test",
     "test:all": "npx nx run-many --all --target=test --parallel",
     "test:dev": "npx nx run-many --all --target=test --parallel --watch",
