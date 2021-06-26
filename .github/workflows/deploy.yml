@@ -1,0 +1,29 @@
+name: Deploy
+
+on:
+  push:
+    branches:
+      - house-wars
+
+jobs:
+  deploy:
+    name: Deploy
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+
+      - name: Yarn install
+        run: yarn
+
+      - name: Build
+        run: yarn nx build --prod house-wars && yarn nx build --prod house-wars-server
+
+      - name: Deploy
+        uses: s0/git-publish-subdir-action@develop
+        env:
+          REPO: self
+          BRANCH: house-wars-deploy
+          FOLDER: dist/apps
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

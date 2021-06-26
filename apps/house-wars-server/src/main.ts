@@ -6,9 +6,10 @@
 import * as express from 'express';
 import { Server } from 'socket.io';
 import * as path from 'path';
+import { environment } from './environments/environment';
 const app = express();
 
-const STATIC = 'dist/apps/house-wars';
+const STATIC = environment.staticPath;
 const INDEX = path.resolve(STATIC, 'index.html');
 
 app.get('/api', (req, res) => {
