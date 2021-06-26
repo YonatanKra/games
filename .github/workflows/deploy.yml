@@ -21,6 +21,7 @@ jobs:
         run: |
           yarn nx build --prod house-wars && yarn nx build --prod house-wars-server
           mv apps/house-wars-server/Procfile dist/apps/Procfile
+          mv package.json dist/apps/package.json
 
       - name: Deploy
         uses: s0/git-publish-subdir-action@develop
