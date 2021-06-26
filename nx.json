@@ -32,6 +32,22 @@
       "tags": [],
       "implicitDependencies": ["fantasy-empires"]
     },
+    "house-wars": {
+      "tags": []
+    },
+    "house-wars-e2e": {
+      "tags": [],
+      "implicitDependencies": ["house-wars"]
+    },
+    "house-wars-house": {
+      "tags": []
+    },
+    "house-wars-player": {
+      "tags": []
+    },
+    "house-wars-server": {
+      "tags": []
+    },
     "map": {
       "tags": []
     }

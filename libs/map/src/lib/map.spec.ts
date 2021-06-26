@@ -1,5 +1,5 @@
 import {
-  centersToGraph,
+  centersToGraph, Edge,
   generateCenters,
   generateEdgesForCenters,
   generateTerritories,
@@ -74,6 +74,48 @@ describe(`Map`, function() {
         })
       });
 
+    });
+  });
+
+  describe(`generateEdgesForCenters`, function() {
+    const size = {width: 10, height: 10};
+    const centers =  [
+      { x: 1, y: 3 },
+      { x: 2, y: 4 },
+      { x: 7, y: 1 },
+      { x: 8, y: 3 },
+      { x: 6, y: 5 },
+    ];
+    let centersEdges: Edge[] = [];
+    beforeEach(function() {
+      centersEdges = generateEdgesForCenters(centers, size);
+    });
+    it(`should return an array of edges of centers`, function() {
+      expect(centersEdges.length).toEqual(centers.length);
+
+      centersEdges.forEach(edges => {
+        edges.forEach(edge => {
+
+          expect(edge instanceof Edge).toEqual(true);
+        })
+      });
+    });
+
+    it(`should create a cycle of nodes`, function() {
+      edges.forEach(territoryEdges => {
+        const countedEdges = [territoryEdges[0]];
+        let counter = 0;
+        while (counter < territoryEdges.length) {
+
+        }
+      });
+
+    });
+
+    it(`should create edges that are closest to the center`, function() {
+      edges.forEach((edge, index, array) => {
+
+      });
     });
   });
 

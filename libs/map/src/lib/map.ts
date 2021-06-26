@@ -52,7 +52,7 @@ class Node {
   }
 }
 
-class Edge {
+export class Edge {
   node: Point;
   next: Point;
 }
@@ -91,4 +91,10 @@ export function centersToGraph(centers: Point[]): Node[] {
 export function generateTerritories(centers: Point[]): Territory[] {
   const graph = centersToGraph(centers);
   return graph.map(center => new Territory(center));
+}
+
+export function generateEdgesForCenters(centers: Point[], size: { width: number; height: number }): Edge[] {
+  return centers.map(center => {
+    return new Edge();
+  });
 }

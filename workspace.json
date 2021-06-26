@@ -45,7 +45,8 @@
                 }
               ]
             }
-          }
+          },
+          "outputs": ["{options.outputPath}"]
         },
         "serve": {
           "builder": "@nrwl/web:dev-server",
@@ -74,7 +75,8 @@
           "options": {
             "jestConfig": "apps/fantasy-empires/jest.config.js",
             "passWithNoTests": true
-          }
+          },
+          "outputs": ["coverage/apps/fantasy-empires"]
         }
       }
     },
@@ -106,6 +108,197 @@
         }
       }
     },
+    "house-wars": {
+      "projectType": "application",
+      "root": "apps/house-wars",
+      "sourceRoot": "apps/house-wars/src",
+      "architect": {
+        "build": {
+          "builder": "@nrwl/web:build",
+          "outputs": ["{options.outputPath}"],
+          "options": {
+            "outputPath": "dist/apps/house-wars",
+            "index": "apps/house-wars/src/index.html",
+            "main": "apps/house-wars/src/main.ts",
+            "polyfills": "apps/house-wars/src/polyfills.ts",
+            "tsConfig": "apps/house-wars/tsconfig.app.json",
+            "assets": [
+              "apps/house-wars/src/favicon.ico",
+              "apps/house-wars/src/assets"
+            ],
+            "styles": ["apps/house-wars/src/styles.scss"],
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "fileReplacements": [
+                {
+                  "replace": "apps/house-wars/src/environments/environment.ts",
+                  "with": "apps/house-wars/src/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "extractCss": true,
+              "namedChunks": false,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "builder": "@nrwl/web:dev-server",
+          "options": {
+            "buildTarget": "house-wars:build"
+          },
+          "configurations": {
+            "production": {
+              "buildTarget": "house-wars:build:production"
+            }
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": ["apps/house-wars/**/*.ts"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/apps/house-wars"],
+          "options": {
+            "jestConfig": "apps/house-wars/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
+    },
+    "house-wars-e2e": {
+      "root": "apps/house-wars-e2e",
+      "sourceRoot": "apps/house-wars-e2e/src",
+      "projectType": "application",
+      "architect": {
+        "e2e": {
+          "builder": "@nrwl/cypress:cypress",
+          "options": {
+            "cypressConfig": "apps/house-wars-e2e/cypress.json",
+            "tsConfig": "apps/house-wars-e2e/tsconfig.e2e.json",
+            "devServerTarget": "house-wars:serve"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "house-wars:serve:production"
+            }
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": ["apps/house-wars-e2e/**/*.{js,ts}"]
+          }
+        }
+      }
+    },
+    "house-wars-house": {
+      "root": "libs/house-wars/house",
+      "sourceRoot": "libs/house-wars/house/src",
+      "projectType": "library",
+      "architect": {
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": ["libs/house-wars/house/**/*.ts"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/house-wars/house"],
+          "options": {
+            "jestConfig": "libs/house-wars/house/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
+    },
+    "house-wars-player": {
+      "root": "libs/house-wars/player",
+      "sourceRoot": "libs/house-wars/player/src",
+      "projectType": "library",
+      "architect": {
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": ["libs/house-wars/player/**/*.ts"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/house-wars/player"],
+          "options": {
+            "jestConfig": "libs/house-wars/player/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
+    },
+    "house-wars-server": {
+      "root": "apps/house-wars-server",
+      "sourceRoot": "apps/house-wars-server/src",
+      "projectType": "application",
+      "architect": {
+        "build": {
+          "builder": "@nrwl/node:build",
+          "outputs": ["{options.outputPath}"],
+          "options": {
+            "outputPath": "dist/apps/house-wars-server",
+            "main": "apps/house-wars-server/src/main.ts",
+            "tsConfig": "apps/house-wars-server/tsconfig.app.json",
+            "assets": ["apps/house-wars-server/src/assets"]
+          },
+          "configurations": {
+            "production": {
+              "optimization": true,
+              "extractLicenses": true,
+              "inspect": false,
+              "fileReplacements": [
+                {
+                  "replace": "apps/house-wars-server/src/environments/environment.ts",
+                  "with": "apps/house-wars-server/src/environments/environment.prod.ts"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "builder": "@nrwl/node:execute",
+          "options": {
+            "buildTarget": "house-wars-server:build"
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": ["apps/house-wars-server/**/*.ts"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/apps/house-wars-server"],
+          "options": {
+            "jestConfig": "apps/house-wars-server/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
+    },
     "map": {
       "root": "libs/map",
       "sourceRoot": "libs/map/src",
@@ -128,7 +321,8 @@
           "options": {
             "jestConfig": "libs/map/jest.config.js",
             "passWithNoTests": true
-          }
+          },
+          "outputs": ["coverage/libs/map"]
         }
       }
     }
@@ -136,5 +330,28 @@
   "cli": {
     "defaultCollection": "@nrwl/web"
   },
-  "defaultProject": "fantasy-empires"
+  "defaultProject": "fantasy-empires",
+  "schematics": {
+    "@nrwl/web:application": {
+      "style": "scss",
+      "linter": "eslint",
+      "unitTestRunner": "jest",
+      "e2eTestRunner": "cypress"
+    },
+    "@nrwl/web:library": {
+      "style": "scss",
+      "linter": "eslint",
+      "unitTestRunner": "jest"
+    },
+    "@nrwl/angular:application": {
+      "linter": "eslint",
+      "unitTestRunner": "jest",
+      "e2eTestRunner": "cypress"
+    },
+    "@nrwl/angular:library": {
+      "linter": "eslint",
+      "unitTestRunner": "jest"
+    },
+    "@nrwl/angular:component": {}
+  }
 }
