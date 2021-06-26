@@ -106,6 +106,7 @@ const express = __webpack_require__(2);
 const socket_io_1 = __webpack_require__(3);
 const path = __webpack_require__(4);
 const environment_1 = __webpack_require__(5);
+const port = process.env.PORT || 3333;
 const app = express();
 const STATIC = environment_1.environment.staticPath;
 const INDEX = path.resolve(STATIC, 'index.html');
@@ -116,7 +117,6 @@ app.use(express.static(STATIC));
 app.get('*', function (req, res) {
     res.sendFile(INDEX);
 });
-const port = process.env.port || 3333;
 const server = app.listen(port, () => {
     console.log(`Listening at http://localhost:${port}/api`);
 });
