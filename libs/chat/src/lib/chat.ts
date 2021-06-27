@@ -19,7 +19,7 @@ export class Chat extends HTMLElement {
         height: 400px;
         border-radius: 5px;
         padding: 5px;
-        overflow: scroll;
+        overflow: auto;
         overflow-wrap: normal;
       }
       </style>
