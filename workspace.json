@@ -1,6 +1,27 @@
 {
   "version": 1,
   "projects": {
+    "chat": {
+      "root": "libs/chat",
+      "sourceRoot": "libs/chat/src",
+      "projectType": "library",
+      "architect": {
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": ["libs/chat/**/*.ts"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/chat"],
+          "options": {
+            "jestConfig": "libs/chat/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
+    },
     "fantasy-empires": {
       "root": "apps/fantasy-empires",
       "sourceRoot": "apps/fantasy-empires/src",

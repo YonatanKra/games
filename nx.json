@@ -25,6 +25,9 @@
     }
   },
   "projects": {
+    "chat": {
+      "tags": []
+    },
     "fantasy-empires": {
       "tags": []
     },

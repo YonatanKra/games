@@ -6,5 +6,6 @@ module.exports = {
     '<rootDir>/libs/house-wars/player',
     '<rootDir>/libs/house-wars/house',
     '<rootDir>/apps/house-wars-server',
+    '<rootDir>/libs/chat',
   ],
 };

@@ -16,6 +16,7 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
+      "@games/chat": ["libs/chat/src/index.ts"],
       "@games/house-wars/house": ["libs/house-wars/house/src/index.ts"],
       "@games/house-wars/player": ["libs/house-wars/player/src/index.ts"],
       "@games/map": ["libs/map/src/index.ts"]
