@@ -1,5 +1,5 @@
 export class Chat extends HTMLElement {
-  private messageArea: Element;
+  private messageArea: HTMLElement;
   private chatForm: Element;
   private chatInput: HTMLInputElement;
 
@@ -53,6 +53,10 @@ export class Chat extends HTMLElement {
   }
 
   addMessage(message: string): void {
+    const shouldScrollToBottom = this.messageArea.offsetHeight + this.messageArea.scrollTop  === this.messageArea.scrollHeight;
     this.messageArea.innerHTML += `<p>${message}</p>`;
+    if (shouldScrollToBottom) {
+      this.messageArea.scrollTop = this.messageArea.scrollHeight
+    }
   }
 }

@@ -51,4 +51,22 @@ describe('chat', () => {
     chatForm.dispatchEvent(new Event('submit'));
     expect(chatForm.querySelector('input').value).toBeFalsy();
   });
+
+  it(`should scroll to bottom when receiving a message`, function() {
+    const SCROLL_HEIGHT_VALUE = 500;
+    Object.defineProperty(HTMLElement.prototype, 'scrollHeight', { configurable: true, value: SCROLL_HEIGHT_VALUE });
+    messagesArea.scrollTop = SCROLL_HEIGHT_VALUE;
+    component.addMessage('stam');
+
+    expect(messagesArea.scrollTop).toEqual(messagesArea.scrollHeight);
+  });
+
+  it(`should remain in same scroll position if not scrolled to bottom when receiving a message`, function() {
+    const SCROLL_HEIGHT_VALUE = 500;
+    const SCROLL_TOP_VALUE = SCROLL_HEIGHT_VALUE - 10;
+    Object.defineProperty(HTMLElement.prototype, 'scrollHeight', { configurable: true, value: SCROLL_HEIGHT_VALUE });
+    messagesArea.scrollTop = SCROLL_TOP_VALUE;
+    component.addMessage('stam');
+    expect(messagesArea.scrollTop).toEqual(SCROLL_TOP_VALUE);
+  });
 });
